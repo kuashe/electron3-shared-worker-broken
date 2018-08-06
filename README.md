@@ -2,7 +2,7 @@
 
 ## Steps to reproduce regression
 
-**Reproducing working version in latest 2.X (Electron 2.0.6)**
+**Working version in latest 2.X (Electron 2.0.6)**
 
 ```sh
 $ git clone https://github.com/kuashe/electron3-shared-worker-broken
@@ -16,7 +16,7 @@ Select the 'Console' tab in the Chrome DevTools
 The Shared Worker variable named 'increment' is incremented alternatively across windows, thus the worker being shared. 
 
 
-**Reproducing regression in current 3.X  (Electron 3.0.0-beta.4)**
+**Regression in current 3.X  (Electron 3.0.0-beta.4)**
 
 ```sh
 $ npm install electron@beta
