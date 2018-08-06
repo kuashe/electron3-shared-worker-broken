@@ -5,6 +5,7 @@
 **Reproducing working version in latest 2.X (Electron 2.0.6)**
 
 ```sh
+$ git clone https://github.com/kuashe/electron3-shared-worker-broken
 
 $ npm install
 
