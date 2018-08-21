@@ -1,6 +1,6 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
-const w = new SharedWorker('./worker.js')
+const w = new SharedWorker('atom://./worker.js')
 
 w.port.onmessage = (e) => console.log('Increment value :' , e.data )

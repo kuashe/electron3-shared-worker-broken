@@ -1,5 +1,8 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, protocol} = require('electron')
+const path = require('path')
+
+protocol.registerStandardSchemes(['atom'])
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -28,9 +31,26 @@ function createWindow ()
   windows.push( window )
 }
 
-app.on('ready', () => {
-  createWindow()
 
+function registerFileRequest( request , callback )
+{
+  
+    const url = request.url.substr(7)
+    callback({path :path.normalize(`${__dirname}/${url}`)})
+}
+
+function registerFileFailure(error)
+{
+  if (error) console.error('Failed to register protocol')
+}
+
+app.on('ready', () => {
+  
+  protocol.registerFileProtocol('atom', registerFileRequest , registerFileFailure )
+  
+  createWindow()
+  
+  
   //Causes flickering with electron 3.X
   setTimeout(() => {
       
